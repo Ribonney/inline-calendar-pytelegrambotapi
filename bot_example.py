@@ -1,6 +1,7 @@
 import telebot
 import datetime
 from telegramcalendar import create_calendar
+from telebot import types
 
 telebot.apihelper.proxy = {'https': 'socks5://userproxy:password@ip:port'}
 bot = telebot.TeleBot("YOUR-TOKEN")
