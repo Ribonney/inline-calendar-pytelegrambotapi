@@ -6,8 +6,9 @@ telebot.apihelper.proxy = {'https': 'socks5://userproxy:password@ip:port'}
 bot = telebot.TeleBot("YOUR-TOKEN")
 current_shown_dates={}
 
+
 @bot.message_handler(commands=['calendar'])
-def get_calendar(message):
+def handle_calendar_command(message):
 
     now = datetime.datetime.now()
     chat_id = message.chat.id
@@ -21,7 +22,7 @@ def get_calendar(message):
 
 
 @bot.callback_query_handler(func=lambda call: 'DAY' in call.data[0:13])
-def get_day(call):
+def handle_day_query(call):
     chat_id = call.message.chat.id
     saved_date = current_shown_dates.get(chat_id)
     last_sep = call.data.rfind(';') + 1
